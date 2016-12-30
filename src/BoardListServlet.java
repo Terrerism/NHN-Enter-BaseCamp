@@ -33,7 +33,7 @@ public class BoardListServlet extends HttpServlet {
                     servletContext.getInitParameter("password"));
             statement = connection.createStatement();
             resultSet = statement.executeQuery(
-                    "select EMAIL,CONTENT,CRE_TIME,MOD_TIME" +
+                    "select BNO,EMAIL,CONTENT,CRE_TIME,MOD_TIME" +
                             " from BOARDS" +
                             " order by CRE_TIME DESC");
             response.setContentType("text/html; charset=UTF-8");
@@ -48,7 +48,8 @@ public class BoardListServlet extends HttpServlet {
                         resultSet.getString("EMAIL") + "," +
                         resultSet.getString("CONTENT") + "," +
                         resultSet.getTimestamp("CRE_TIME") + "," +
-                        resultSet.getTimestamp("MOD_TIME") + "<br>");
+                        resultSet.getTimestamp("MOD_TIME") + "," +
+                        "<a href='update?no=" + resultSet.getInt("BNO") + "'>수정</a><br>");
                 num++;
             }
             out.println("</body></html>");

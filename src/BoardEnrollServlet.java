@@ -62,7 +62,8 @@ public class BoardEnrollServlet extends HttpServlet {
         out.println("암호: <input type='password' name='password'><br>");
         out.println("내용: <input type='text' name='content'><br>");
         out.println("<input type='submit' value='등록'>");
-        out.println("<input type='reset' value='취소'>");
+        out.println("<input type='reset' value='취소'" +
+                    " onclick='location.href=\"list\"'>");
         out.println("</form>");
         out.println("</body></html>");
     }
