@@ -35,11 +35,12 @@ public class BoardListServlet extends HttpServlet {
             resultSet = statement.executeQuery(
                     "select EMAIL,CONTENT,CRE_TIME,MOD_TIME" +
                             " from BOARDS" +
-                            " order by CRE_TIME ASC");
+                            " order by CRE_TIME DESC");
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>방명록</title></head>");
             out.println("<body><h1>방명록</h1>");
+            out.println("<p><a href='enroll'>글쓰기</a></p>");
             int num = 1;
             while (resultSet.next()) {
                 out.println(
