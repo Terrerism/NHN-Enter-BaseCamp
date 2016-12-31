@@ -11,15 +11,15 @@ import java.sql.*;
 /**
  * Created by show9 on 2016-12-31.
  */
-@WebServlet("/board/update")
-public class BoardUpdateServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // no, content, password를 받는다
-        request.setCharacterEncoding("UTF-8");
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        @WebServlet("/board/update")
+        public class BoardUpdateServlet extends HttpServlet {
+            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                // no, content, password를 받는다
+                request.setCharacterEncoding("UTF-8");
+                Connection connection = null;
+                PreparedStatement preparedStatement = null;
+                Statement statement = null;
+                ResultSet resultSet = null;
         try {
             ServletContext servletContext = this.getServletContext();
             Class.forName(servletContext.getInitParameter("driver"));
@@ -48,7 +48,7 @@ public class BoardUpdateServlet extends HttpServlet {
             // 입력받은 비밀번호와 디비의 비밀번호가 다르면
             // update로 돌아가 다시 입력받음
             else {
-                response.setContentType("text/html; chatset=UTF-8");
+                response.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = response.getWriter();
                 out.println("<html><head><title>글 수정 요청 결과</title></head>");
                 out.println("<body>");
@@ -67,6 +67,7 @@ public class BoardUpdateServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -83,7 +84,7 @@ public class BoardUpdateServlet extends HttpServlet {
                             " where BNO=" + request.getParameter("no"));
             resultSet.next();
 
-            response.setContentType("text/html; chatset=UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
 
             // POST요청으로
